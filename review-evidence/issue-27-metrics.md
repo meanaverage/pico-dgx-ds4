@@ -12,7 +12,7 @@ The patch targets Pico `main` at `922dddb`. Its only new HTTP route is `GET /met
 | DeepSeek V4.1 Flash, skeptical | LGTM | No blocking findings or optional changes. |
 | Gemini 4 Neon XHigh | LGTM | Confirmed the narrowed fixtures. Suggested extra malformed-frame combinations that the isolated checks exercised. |
 | Claude Opus XHigh, skeptical | LGTM | Confirmed the per-run prefix, exact timing fields, wire prompt length and zero initial generation. The optional log check has a pre-existing second-run limitation. |
-| Claude Opus XHigh, test oracle | 2 P2 reported | Suggested deliberately conflicting DONE fields for cancelled token counts and the cached-prefix clamp. The existing socket test rejects counting at DONE. Independent wire checks verified both conflict cases. |
+| Claude Opus XHigh, test oracle | 2 P2 reported | Suggested deliberately conflicting DONE fields for cancelled token counts and the cached-prefix clamp. The existing socket test rejects counting at DONE. Independent wire checks verified both conflict cases. The extra assertions are optional. Submit `b8fd37a` as reviewed. |
 
 The final review closed the repeat-run, wire-field and initial-counter findings. The Opus test-oracle suggestions cover conflicting fields from an out-of-contract peer. Separate wire checks confirmed the actual exporter in both cases.
 
